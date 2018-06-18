@@ -1,3 +1,6 @@
+from opay.utils.utils import random_name
+
+
 class Gateway:
     def __init__(self, util):
         self.util = util
@@ -8,7 +11,7 @@ class Gateway:
                 "currency": "NGN",
                 "publicKey": self.util.settings.api_key,
                 "amount": amount,
-                "reference": self.util.settings.merchant_reference,
+                "reference": random_name(),
                 "countryCode": "NG",
                 "tokenize": True,
                 "instrumentType": "card",
@@ -30,7 +33,7 @@ class Gateway:
                 "currency": "NGN",
                 "publicKey": self.util.settings.api_key,
                 "amount": 10,
-                "reference": self.util.settings.merchant_reference,
+                "reference": random_name(),
                 "countryCode": "NG",
                 "tokenize": True,
                 "instrumentType": "card",
@@ -52,7 +55,7 @@ class Gateway:
                 "currency": "NGN",
                 "publicKey": self.util.settings.api_key,
                 "amount": 10,
-                "reference": self.util.settings.merchant_reference,
+                "reference": random_name(),
                 "countryCode": "NG",
                 "tokenize": False,
                 "instrumentType": "account",
@@ -70,13 +73,13 @@ class Gateway:
         data = {
             "input": {
                 "currency": "NGN",
-                "privateKey": self.util.token,
+                "privateKey": self.util.settings.secret_key,
                 "amount": amount,
                 "countryCode": "NG",
                 "token": transaction_token
             }
         }
-        r = self.util.send_request(self.util.settings.gateway_create, data)
+        r = self.util.send_request(self.util.settings.gateway_commit, data)
         if 'gatewayCommit' in r:
             return r.get('gatewayCommit')
         else:
@@ -96,7 +99,7 @@ class Gateway:
         data = {
             "token": transaction_token
         }
-        r = self.util.send_request(self.util.settings.gateway_status, data)
+        r = self.util.send_request(self.util.settings.gateway_3dsecure, data)
         if 'gateway3DSecure' in r:
             return r.get('gateway3DSecure')
         else:
@@ -107,7 +110,7 @@ class Gateway:
             "token": transaction_token,
             "otp": otp
         }
-        r = self.util.send_request(self.util.settings.gateway_status, data)
+        r = self.util.send_request(self.util.settings.gateway_input_otp, data)
         if 'gatewayInputOTP' in r:
             return r.get('gatewayInputOTP')
         else:
@@ -118,7 +121,7 @@ class Gateway:
             "token": transaction_token,
             "pin": pin
         }
-        r = self.util.send_request(self.util.settings.gateway_status, data)
+        r = self.util.send_request(self.util.settings.gateway_input_pin, data)
         if 'gatewayInputPIN' in r:
             return r.get('gatewayInputPIN')
         else:
@@ -128,7 +131,7 @@ class Gateway:
         data = {
             "bank": bank_name
         }
-        r = self.util.send_request(self.util.settings.gateway_status, data)
+        r = self.util.send_request(self.util.settings.gateway_bank_fields, data)
         if 'gatewayBankPaymentFields' in r:
             return r.get('gatewayBankPaymentFields')
         else:

@@ -1,10 +1,9 @@
 
 
 class Settings:
-    def __init__(self, public_key, private_key, reference, mode):
+    def __init__(self, public_key, private_key, mode):
         self.api_key = public_key
         self.secret_key = private_key
-        self.merchant_reference = reference
 
         if mode == "test":
             self.url = "https://bz-sandbox.opay-test.net/api/"

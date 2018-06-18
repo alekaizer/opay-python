@@ -18,8 +18,8 @@ class Charge:
            }
         }
 
-        r = self.util.send_request(self.util.settings.gateway_status, data)
-        if 'orderWithStatus' in r:
+        r = self.util.send_request(self.util.settings.payment_order, data)
+        if 'orderWithStatus' in r and r.get('orderWithStatus'):
             return r.get('orderWithStatus')
         else:
             return r

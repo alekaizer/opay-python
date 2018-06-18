@@ -25,7 +25,7 @@ class Bank:
         if recipient_email:
             data["customerEmail"] = recipient_email
 
-        r = self.util.send_request(self.util.settings.gateway_status, data)
+        r = self.util.send_request(self.util.settings.payment_order, data)
         if 'orderWithStatus' in r:
             return r.get('orderWithStatus')
         else:
