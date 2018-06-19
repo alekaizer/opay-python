@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='opay',
-    version='v1.0',
+    version='v1.0.1',
     packages=['opay', 'opay.bank', 'opay.card',
               'opay.charge', 'opay.utils', 'opay.gateway',
               'opay.test'],
@@ -10,5 +10,5 @@ setup(
     license='MIT',
     author='Achille AROUKO',
     author_email='achille.arouko@gmail.com',
-    description='MoneyWave Python Library'
+    description='OPay Python Library'
 )
