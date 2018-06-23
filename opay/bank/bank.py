@@ -45,6 +45,7 @@ class Bank:
         else:
             return r
 
+
     def get_banks(self):
         return [
                 {"Code": "232150029", "Country": "NG", "Name": "Sterling Bank"},
