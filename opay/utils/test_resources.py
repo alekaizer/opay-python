@@ -1,5 +1,5 @@
 CardVisa = {
-   "CardNumber":  "4539216396812806",
+   "CardNumber":  "4539 2163 9681 2806",
    "ExpiryYear":  "19",
    "ExpiryMonth": "01",
    "CVV":         "812",
@@ -7,7 +7,7 @@ CardVisa = {
    "Name":        "Test Testson",
 }
 CardMaster = {
-   "CardNumber":  "5540183733002653",
+   "CardNumber":  "5540 1837 3300 2653",
    "ExpiryYear":  "19",
    "ExpiryMonth": "09",
    "CVV":         "789",
