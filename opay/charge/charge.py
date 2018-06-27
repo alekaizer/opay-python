@@ -21,5 +21,7 @@ class Charge:
         r = self.util.send_request(self.util.settings.payment_order, data)
         if 'orderWithStatus' in r and r.get('orderWithStatus'):
             return r.get('orderWithStatus')
+        elif 'orderForMerchant' in r and r.get('orderForMerchant'):
+            return r.get('orderForMerchant')
         else:
             return r
